@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Первая страница</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+@extends('layouts.main')
+@section('content')
+
     <p>Первая страница</p>
     {{ $c }}<br>
     {{ $dev }}
@@ -18,5 +12,6 @@
             @endif
         </p>
     @endfor
-</body>
-</html>
+
+    
+@endsection()
