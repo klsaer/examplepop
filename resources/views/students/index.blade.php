@@ -1,10 +1,22 @@
 @extends('layouts.main')
 @section('content')
-<h2>Список студентов</h2>
-@foreach($students as $student)
-<p>{{ $student->lname }}</p>
-@endforeach
-
+<div class='container md:mx-auto'>
+    <h2>Список студентов</h2>
+    @foreach($students as $student)
+        <div class='flex justify-between'>
+            <img class='size-20' src="{{ $student->path_img }}" alt="{{ $student->lname }}">
+            <p>{{ $student->lname }}</p>
+            <p>{{ $student->fname }}</p>
+            <p>{{ $student->age }}</p>
+<form method="POST" action="{{route('students.destroy', $student->id)}}">
+    @method('delete')
+    @csrf
+    <input type="submit" value="Удалить">
+</form>
+        </div>
+    @endforeach
+    {{ $students->links() }}
+</div>
 
 
 <!-- Modal toggle -->
