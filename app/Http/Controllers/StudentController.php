@@ -32,4 +32,14 @@ class StudentController extends Controller
     public function show(Student $student){
         return view('students.show',compact('student'));
     }
+
+    public function update(Request $request, Student $student){
+        $data = $request -> validate([
+            'fname'=>'string',
+            'lname'=>'string',
+            'age'=>'integer'
+        ]);
+        $student->update($data);
+        return redirect()->back();
+    }
 }
