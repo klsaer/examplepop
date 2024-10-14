@@ -17,4 +17,19 @@ class StudentController extends Controller
         $student -> delete();
         return redirect()->back();
     }
+
+    public function store (Request $request, Student $student)
+    {
+        $data = $request -> validate([
+            'fname'=>'string',
+            'lname'=>'string',
+            'age'=>'integer'
+        ]);
+        $student->create($data);
+        return redirect()->back();
+    }
+
+    public function show(Student $student){
+        return view('students.show',compact('student'));
+    }
 }
