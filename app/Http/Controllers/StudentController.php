@@ -9,6 +9,7 @@ use App\Models\Student;
 class StudentController extends Controller
 {
     public function index(){
+
         $students = Student::paginate(10);
 
         $groups = Group::all();
