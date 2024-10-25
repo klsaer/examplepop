@@ -1,6 +1,18 @@
 @extends('layouts.main')
 @section('content')
 <div class='container md:mx-auto'>
+
+    <h2>Оценки студента {{ $student->lname }}</h2>
+    <div>
+        @forelse($student->subjects as $subject)
+            <p>{{ $subject->title }}</p>
+            <p> {{ $subject->pivot->grade}}</p>
+        @empty
+            <p>У студента еще нет оценок</p>
+        @endforelse
+
+    </div>
+
     <form action="{{ route('students.update', $student->id) }}" method="POST">
         @method('put')
         @csrf
