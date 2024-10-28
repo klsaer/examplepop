@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectConroller;
+use App\Http\Middleware\Admin;
 
 Route::get('/', [MainController::class, 'show'])->name('home');
 
@@ -40,5 +41,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/subjects',[SubjectConroller::class,'index'])->name('subjects.index');
 });
+
+Route::middleware(Admin::class)->group(function(){
+    Route::get('/admin', function(){
+        return view('admin.index');
+    })->name('admin.index');
+});
+
+
 
 require __DIR__ . '/auth.php';
