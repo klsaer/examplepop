@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const ADMIN_ROLE ='admin';
+
+    public function isAdmin(){
+        return $this->role=== self::ADMIN_ROLE;
+    }
     /**
      * The attributes that are mass assignable.
      *
